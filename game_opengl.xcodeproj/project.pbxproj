@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		7AC58E742B8A430B00E41CE6 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7AC58E732B8A430B00E41CE6 /* main.cpp */; };
+		7AC58E7F2B8A456300E41CE6 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC58E7E2B8A456300E41CE6 /* OpenGL.framework */; };
+		7AC58E812B8A457100E41CE6 /* libglfw.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC58E802B8A457100E41CE6 /* libglfw.dylib */; };
+		7AC58E832B8A458A00E41CE6 /* libGLEW.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AC58E822B8A458A00E41CE6 /* libGLEW.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		7AC58E702B8A430B00E41CE6 /* game_opengl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = game_opengl; sourceTree = BUILT_PRODUCTS_DIR; };
 		7AC58E732B8A430B00E41CE6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7AC58E7E2B8A456300E41CE6 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		7AC58E802B8A457100E41CE6 /* libglfw.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.dylib; path = dependencies/GLFW/lib/libglfw.dylib; sourceTree = "<group>"; };
+		7AC58E822B8A458A00E41CE6 /* libGLEW.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.dylib; path = dependencies/GLEW/lib/libGLEW.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +38,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AC58E832B8A458A00E41CE6 /* libGLEW.dylib in Frameworks */,
+				7AC58E812B8A457100E41CE6 /* libglfw.dylib in Frameworks */,
+				7AC58E7F2B8A456300E41CE6 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,8 +50,10 @@
 		7AC58E672B8A430B00E41CE6 = {
 			isa = PBXGroup;
 			children = (
-				7AC58E722B8A430B00E41CE6 /* game_opengl */,
+				7AC58E7A2B8A43B600E41CE6 /* dependencies */,
+				7AC58E722B8A430B00E41CE6 /* src */,
 				7AC58E712B8A430B00E41CE6 /* Products */,
+				7AC58E7D2B8A456300E41CE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,12 +65,45 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7AC58E722B8A430B00E41CE6 /* game_opengl */ = {
+		7AC58E722B8A430B00E41CE6 /* src */ = {
 			isa = PBXGroup;
 			children = (
 				7AC58E732B8A430B00E41CE6 /* main.cpp */,
 			);
-			path = game_opengl;
+			path = src;
+			sourceTree = "<group>";
+		};
+		7AC58E7A2B8A43B600E41CE6 /* dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				7AC58E7C2B8A43E700E41CE6 /* GLFW */,
+				7AC58E7B2B8A43E200E41CE6 /* GLEW */,
+			);
+			path = dependencies;
+			sourceTree = "<group>";
+		};
+		7AC58E7B2B8A43E200E41CE6 /* GLEW */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GLEW;
+			sourceTree = "<group>";
+		};
+		7AC58E7C2B8A43E700E41CE6 /* GLFW */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GLFW;
+			sourceTree = "<group>";
+		};
+		7AC58E7D2B8A456300E41CE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AC58E822B8A458A00E41CE6 /* libGLEW.dylib */,
+				7AC58E802B8A457100E41CE6 /* libglfw.dylib */,
+				7AC58E7E2B8A456300E41CE6 /* OpenGL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +289,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/dependencies/GLEW/include",
+					"$(PROJECT_DIR)/dependencies/GLFW/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/dependencies/GLFW/lib",
+					"$(PROJECT_DIR)/dependencies/GLEW/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -253,6 +306,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/dependencies/GLEW/include",
+					"$(PROJECT_DIR)/dependencies/GLFW/include",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/dependencies/GLFW/lib",
+					"$(PROJECT_DIR)/dependencies/GLEW/lib",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
